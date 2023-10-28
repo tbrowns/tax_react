@@ -2,47 +2,51 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import{motion} from "framer-motion";
 
+import History from './History.jsx'
+import Spacer from './Spacer.jsx';
+import Compare from './Compare.jsx';
+
 function Tanzania() {
   const [basic_pay,setBasic_pay] = useState(0);
   const [paye,setPaye] = useState(0);
-  const [nssf,setNssf] = useState(0);
 
+  const [display_analysis,setDisplay_analysis]= useState(false);
   const [invalid,setInvalid] =useState(false);
   const [display,setDisplay]= useState(false);
 
-  const taxable = (basic_pay-nssf).toFixed(2);
-  const net_amount = (taxable-paye).toFixed(2);
+  const [first,setFirst]=useState(0);
+  const [second,setSecond]=useState(0);
+  const [third,setThird]=useState(0);
+
+  const nssf= basic_pay*0.1;
+  const taxable = basic_pay-nssf;
+  const net_amount = taxable-paye;
 
   useEffect (() => {
-    let temp=0;
-    if(nssf!==0){
-      temp=basic_pay*0.1;
-      setNssf(temp)
-
-    }
+    setDisplay(false);
+    setInvalid(false);
 
     let gross_tax=0;
-    let tax=basic_pay-temp;
+    let tax=basic_pay-nssf;
     let i=0;
     
     let percentages=[0,8,20,25,30]
     let tax_bracket=[270000,250000,240000,240000,100000000]
 
-    while(i<=5){
-      if(tax<tax_bracket[i]){
+    while(i<5){
+      if(tax<tax_bracket[i]||i===4){
           gross_tax+=(percentages[i]/100)*tax;
           break;
 
-      }
-      else{
+      }else{
           gross_tax+=(percentages[i]/100)*tax_bracket[i];
           tax-=tax_bracket[i]
           i++;
       }
     }
 
-    setPaye(gross_tax.toFixed(2));
-    setDisplay(false);
+    setPaye(gross_tax);
+    
 
   },[basic_pay]);
 
@@ -55,29 +59,38 @@ function Tanzania() {
         return true;
       }
   }
-  const handler = () =>{
-    if(nssf===0){
-      setNssf(basic_pay*0.1)
 
-    }else{
-      setNssf(0);
-    }
-    
-  }
-  
   const calculate = () => {
+    setDisplay_analysis(false);
+    
     if(checkValidity()) setDisplay(true);
     else{
         setDisplay(false);
         return;
     }
 
+    if(first!==net_amount){
+      setFirst(net_amount);
+      setSecond(first);
+      setThird(second);
+
+    }
+  }
+
+  const analysis = () => {
+    setDisplay(false);
+    setDisplay_analysis(true);
+   
   }
 
   return (
-    <div className='m-4 flex flex-col justify-center items-center '>
+    <div className='mt-32 h-96'>
+        <div className=''>
+           <History one={first} two={second} three={third}/>
+        </div>
+        <div className='m-2 flex flex-wrap justify-center items-center'>
         <form action="" id='formk'
-            className='bg-white z-50 m-4 h-60 w-72 flex flex-col justify-center items-center'>
+            className='m-4 py-4 w-72 flex flex-col justify-center items-center'>
             <input className='mt-4 w-64 px-4 h-8 rounded-2xl border border-black' 
                 type='text'
                 placeholder='Enter basic salary'
@@ -91,15 +104,12 @@ function Tanzania() {
                 Please enter a valid amount!
                 
             </label>
-
-            <div className='flex justify-between items-center my-4 w-56'>
-              <label htmlFor="nssf">Apply NSSF:</label>
-              <input type='checkbox' id='nssf'
-                className='accent-teal'
-                onClick={handler}
-              >
-              
-              </input>
+            <div className='flex text-center items-center m-3  w-20 h-8  border border-black rounded-2xl'>
+                <motion.button whileTap={{scale: .8}} type="button"
+                  className='ml-2 flex items-center  rounded-2xl h-6 w-20 '>
+                    <div className=''>NSSF</div>
+                    <div className='flex items-center justify-center ml-1 w-4 h-4 text-xs border border-black rounded-full'>!</div>
+                </motion.button>
             </div>
             
             <motion.button whileTap={{scale: .8}} type="button"
@@ -107,7 +117,21 @@ function Tanzania() {
               className="bg-teal w-28 py-1 my-4 rounded-3xl border border-black" >
               Calculate
             </motion.button>
+
+            {display &&
+            <motion.button whileTap={{scale: .8}} type='button'
+              onClick={analysis}
+              className="bg-teal w-28 py-1 my-4 rounded-3xl border border-black" >
+              Analyze
+
+            </motion.button>}
         </form>
+
+        {display_analysis && 
+            <div className=''>
+                <Compare amount={basic_pay}/>
+            </div>
+        }
 
         {display &&
         <div className="flex flex-col justify-center items-center bg-white z-50 w-60 h-96 " 
@@ -117,34 +141,35 @@ function Tanzania() {
           </div> 
           <div id='payslip_child'>
             SALARY: 
-            <span className='text-sm' id="salary">Tsh. {basic_pay} </span>
+            <span className='flex text-sm' id="salary">Tsh. <Spacer value={basic_pay}/> </span>
 
           </div>
-          <div className={`${nssf!=0?'flex':'hidden'} flex-col justify-center items-center text-lg my-1`}>
+          <div className={`${nssf!==0?'flex':'hidden'} flex-col justify-center items-center text-lg my-1`}>
             NSSF: 
-            <span className='text-sm' id="salary">Tsh. {nssf} </span>
+            <span className='flex text-sm' id="salary">Tsh. <Spacer value={nssf}/> </span>
 
           </div>
 
           <div id='payslip_child'>
             TAXABLE INCOME: 
-            <span className='text-sm' id="salary">Tsh. {taxable} </span>
+            <span className='flex text-sm' id="salary">Tsh. <Spacer value={taxable}/> </span>
 
           </div>
           <div id='payslip_child'>
             PAYE: 
-            <span className='text-sm' id="salary">Tsh. {paye} </span>
+            <span className='flex text-sm' id="salary">Tsh. <Spacer value={paye}/> </span>
 
           </div>
           <div id='payslip_child'>
             NET INCOME: 
-            <span className='text-sm' id="salary">Tsh. {net_amount}</span>
+            <span className='flex text-sm' id="salary">Tsh. <Spacer value={net_amount}/></span>
 
           </div>
           
             
         </div>
         }
+        </div>
 
     </div>
   )

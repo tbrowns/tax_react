@@ -1,27 +1,40 @@
 //npm install rsuite
 //npm install next
 
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 
 import { useLocation } from 'react-router-dom';
 
 import { Dropdown } from "rsuite"; 
 import "rsuite/dist/rsuite.min.css"; 
 
-function Header() {
-  let country="Kenya";
-  
-  const location=useLocation();
 
-  if(location.pathname==="/Uganda"){
-    country="Uganda";
+function Header() {
+  const location=useLocation();
+  let country="Kenya";
+
+  if(location.pathname==="/Uganda")  country="Uganda";
+   
+  else if(location.pathname==="/Tanzania") country="Tanzania";
     
-  }else if(location.pathname==="/Tanzania"){
-    country="Tanzania";
-  }
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
 
   return (
-    <div className=' px-4 flex justify-between items-center'>
+    <div className={`{ fixed w-full top-0 px-3 py-3 flex justify-between ${isScrolled ? 'bg-white' : 'bg-transparent'}`}>
         <div id='title'
          className='font-bold text-5xl'>
           Tax Calculator
