@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tax_react/static/css/main.1796a404.css",
+    "main.js": "/tax_react/static/js/main.abde3ccb.js",
+    "index.html": "/tax_react/index.html",
+    "main.1796a404.css.map": "/tax_react/static/css/main.1796a404.css.map",
+    "main.abde3ccb.js.map": "/tax_react/static/js/main.abde3ccb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1796a404.css",
+    "static/js/main.abde3ccb.js"
+  ]
+}
