@@ -47,7 +47,7 @@ function Compare({amount}) {
   }
 
   function ugandan_tax(){
-    if(location.pathname==="/*"||location.pathname==="") ugandan_amount*=25;
+    if(location.pathname==="/"||location.pathname==="") ugandan_amount*=25;
       
     else if(location.pathname==="/Tanzania") ugandan_amount*=1.5;
     let gross_tax=0;
@@ -73,7 +73,7 @@ function Compare({amount}) {
   }
 
   function tanzanian_tax(){
-    if(location.pathname==="/*"||location.pathname==="")  tanzanian_amount*=16.6;
+    if(location.pathname==="/"||location.pathname==="")  tanzanian_amount*=16.6;
       
     else if(location.pathname==="/Uganda") tanzanian_amount*=0.66;
 

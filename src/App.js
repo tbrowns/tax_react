@@ -5,7 +5,7 @@ import './App.css';
 
 import { Routes, Route} from 'react-router-dom';
 
-import { Kenya, Uganda, Tanzania, History,Header } from './components';
+import { Kenya, Uganda, Tanzania,Header } from './components';
 
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
         </div>
       <Header />
 
-      <Routes>
-        <Route path="/*" element={<Kenya/>} />
+      <Routes basePath='/tax_react'>
+        <Route path="/" element={<Kenya/>} />
         <Route path="/Uganda" element={<Uganda />} />
         <Route path="/Tanzania" element={<Tanzania />} />
       </Routes>
