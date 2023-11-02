@@ -1,7 +1,2 @@
-export {default as Kenya} from './Kenya'
-export {default as Compare} from './Compare'
-export {default as Uganda} from './Uganda'
-export {default as Tanzania} from './Tanzania'
-export {default as History} from './History'
 export {default as Header} from './Header'
-export {default as Spacer} from './Spacer'
+export {default as Main} from './Main'
