@@ -57,7 +57,7 @@ function Main() {
         setDisplay_analysis(false);
         setInvalid(false);
 
-        if(location.pathname==='/'){
+        if(location.pathname==='/tax_react'){
             temp=Kenya(basic_pay,nssf,nhif);
             setResult(temp);
 
@@ -128,7 +128,7 @@ function Main() {
                 
             </label>
 
-            {location.pathname==='/' &&
+            {(location.pathname==='/tax_react') &&
              <div className='flex flex-col items-center'>
                 <div className='flex  mr-4'>
                 <motion.button whileTap={{scale: .8}} type="button"

@@ -42,7 +42,7 @@ function Header() {
          
         <div className='text-lg '>
           <Dropdown title={country}>
-            <Dropdown.Item as="a" href="/">Kenya</Dropdown.Item>
+            <Dropdown.Item as="a" href="/tax_react">Kenya</Dropdown.Item>
             <Dropdown.Item as="a" href="/Uganda">Uganda</Dropdown.Item>
             <Dropdown.Item as="a" href="/Tanzania">Tanzania</Dropdown.Item>
 

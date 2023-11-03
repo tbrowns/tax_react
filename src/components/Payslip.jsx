@@ -11,7 +11,7 @@ function Payslip(props) {
     let nhif=0;
     let lst=0;
 
-    if(location.pathname==='/'){
+    if(location.pathname==='/tax_react'){
         house_levy=props.myObject.levy;
         nhif=props.myObject.nhif;
 
