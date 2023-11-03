@@ -39,17 +39,17 @@ function Header() {
          className='font-bold text-5xl'>
           Tax Calculator
         </div>
+         
         <div className='text-lg '>
-        <Dropdown title={country}>
-          <Dropdown.Item as="a" href="/">Kenya</Dropdown.Item>
-          <Dropdown.Item as="a" href="/Uganda">Uganda</Dropdown.Item>
-          <Dropdown.Item as="a" href="/Tanzania">Tanzania</Dropdown.Item>
+          <Dropdown title={country}>
+            <Dropdown.Item as="a" href="/">Kenya</Dropdown.Item>
+            <Dropdown.Item as="a" href="/Uganda">Uganda</Dropdown.Item>
+            <Dropdown.Item as="a" href="/Tanzania">Tanzania</Dropdown.Item>
 
-        </Dropdown>
+          </Dropdown>
 
         </div>
-        
-        </div>
+    </div>
         
   )
 }

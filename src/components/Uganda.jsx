@@ -21,12 +21,13 @@ export function Uganda(basic_pay,lst) {
   
   const percentages=[0,10,20,30,40]
   const upper_limit=[235000,100000,75000,9590000,100000000]
-  const paye=Calculator(basic_pay,percentages,upper_limit);
-  const net_amount=basic_pay-(paye+nssf+lst_value);
+  const taxable=basic_pay-lst_value;
+  const paye=Calculator(taxable,percentages,upper_limit);
+  const net_amount=taxable-(paye+nssf);
 
   const result ={
     income: basic_pay,
-    taxable: basic_pay,
+    taxable: taxable,
     nssf: nssf,
     paye: paye,
     lst: lst_value,

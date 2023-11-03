@@ -18,7 +18,7 @@ function Compare({amount}) {
       
     else if(location.pathname==="/Tanzania") kenyan_amount*=0.06;
 
-    const result=Kenya(kenyan_amount,1080);
+    const result=Kenya(kenyan_amount,1080,false);
 
     let income=result.total;
 

@@ -8,10 +8,14 @@ function Payslip(props) {
     const location=useLocation();
 
     let house_levy=0;
+    let nhif=0;
     let lst=0;
 
-    if(location.pathname==='/') house_levy=props.myObject.levy;
-    else if(location.pathname==='/Uganda') lst=props.myObject.lst;
+    if(location.pathname==='/'){
+        house_levy=props.myObject.levy;
+        nhif=props.myObject.nhif;
+
+    }else if(location.pathname==='/Uganda') lst=props.myObject.lst;
 
   return (
     <div id='my_payslip'>
@@ -36,7 +40,7 @@ function Payslip(props) {
                TAXABLE INCOME: <span className='flex text-sm' id="taxable">{Currency()} <Spacer value={props.myObject.taxable} /> </span>
             </div>
 
-            <div id='payslip_child'>
+            <div className={`flex-col justify-center my-1 items-center text-lg ${house_levy===0? 'hidden':'flex' }`}>
                 RELIEF: <span className='flex text-sm' id="relief">{Currency()} <Spacer value={2400} /> </span>
             </div>
 
@@ -46,6 +50,9 @@ function Payslip(props) {
 
             <div className={`flex-col justify-center my-1 items-center text-lg ${house_levy===0? 'hidden':'flex' }`}>
                 HOUSING LEVY: <span className='flex text-sm'  id="levy">{Currency()} <Spacer value={house_levy} /> </span>
+            </div>
+            <div className={`flex-col justify-center my-1 items-center text-lg ${nhif===0? 'hidden':'flex' }`}>
+                NHIF: <span className='flex text-sm'  id="levy">{Currency()} <Spacer value={nhif} /> </span>
             </div>
 
             <div id='payslip_child'>
