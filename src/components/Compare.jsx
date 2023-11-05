@@ -33,7 +33,7 @@ function Compare({amount}) {
   function ugandan_tax(){
     let ugandan_amount=new_amount;
 
-    if(location.pathname==="/"||location.pathname==="") ugandan_amount*=25;
+    if(location.pathname==="/tax_react"||location.pathname==='/tax_react/') ugandan_amount*=25;
       
     else if(location.pathname==="/Tanzania") ugandan_amount*=1.5;
 
@@ -41,7 +41,7 @@ function Compare({amount}) {
 
     let income=result.total;
 
-    if(location.pathname==="/"||location.pathname==="") income/=25;
+    if(location.pathname==="/tax_react"||location.pathname==="/tax_react/") income/=25;
       
     else if(location.pathname==="/Tanzania") income/=1.5;
 
@@ -51,14 +51,14 @@ function Compare({amount}) {
   function tanzanian_tax(){
     let tanzanian_amount=new_amount;
 
-    if(location.pathname==="/"||location.pathname==="")  tanzanian_amount*=16.6;
+    if(location.pathname==="/tax_react"||location.pathname==="/tax_react/")  tanzanian_amount*=16.6;
       
     else if(location.pathname==="/Uganda") tanzanian_amount*=0.66;
 
     const result=Tanzania(tanzanian_amount);
     let income=result.total;
 
-    if(location.pathname==="/"||location.pathname==="")  income/=16.6;
+    if(location.pathname==="/tax_react"||location.pathname==="/tax_react/")  income/=16.6;
       
     else if(location.pathname==="/Uganda") income/=0.66;
 

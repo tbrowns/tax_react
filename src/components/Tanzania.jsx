@@ -5,7 +5,7 @@ export function Tanzania(basic_pay) {
   const taxable = basic_pay-nssf;
   
   let percentages=[0,8,20,25,30]
-  let upper_limit=[270000,250000,240000,240000,100000000]
+  let upper_limit=[270000,250000,240000,240000,10000000]
 
   let paye=Calculator(taxable,percentages,upper_limit);
 

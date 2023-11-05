@@ -55,7 +55,7 @@ function Main() {
         setDisplay_analysis(false);
         setInvalid(false);
 
-        if(location.pathname==='/tax_react'){
+        if(location.pathname==='/tax_react'||location.pathname==='/tax_react/'){
             temp=Kenya(basic_pay,nssf,nhif);
             setResult(temp);
 
@@ -79,14 +79,17 @@ function Main() {
         setTimeout(() => {
             setIsLoading(false);
 
-            if(checkValidity() && result.total!==previous_values[0]) {
-                let temp=[result.total, ...previous_values];
-
-                if(temp.length > 3) temp.length = 3;
-
-                setPrevious_values(temp);
+            if(checkValidity()) {
                 setDisplay(true);
-                
+
+                if(result.total!==previous_values[0]){
+                    let temp=[result.total, ...previous_values];
+
+                    if(temp.length > 3) temp.length = 3;
+
+                    setPrevious_values(temp);
+
+                }
             }else return;
     
         }, 2500);
@@ -126,7 +129,7 @@ function Main() {
                 
             </label>
 
-            {(location.pathname==='/tax_react') &&
+            {(location.pathname==='/tax_react'||location.pathname==='/tax_react/') &&
              <div className='flex flex-col items-center'>
                 <div className='flex  mr-4'>
                 <motion.button whileTap={{scale: .8}} type="button"
