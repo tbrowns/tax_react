@@ -27,9 +27,7 @@ function Main() {
     const [display_payslip,setDisplay]= useState(false);
     const [display_analysis,setDisplay_analysis]= useState(false);
 
-    const [first,setFirst]=useState(0);
-    const [second,setSecond]=useState(0);
-    const [third,setThird]=useState(0);
+    const [previous_values, setPrevious_values] = useState([]);
 
     const location=useLocation();
 
@@ -70,8 +68,10 @@ function Main() {
             setResult(temp);
         }
 
-    },[basic_pay,lst,nssf,location,nhif])
+        
 
+    },[basic_pay,lst,nssf,location,nhif])
+     
     const calculate = () => {
         setIsLoading(true);
         setDisplay_analysis(false);
@@ -79,19 +79,17 @@ function Main() {
         setTimeout(() => {
             setIsLoading(false);
 
-            if(checkValidity()) setDisplay(true);
+            if(checkValidity() && result.total!==previous_values[0]) {
+                let temp=[result.total, ...previous_values];
 
-            else return;
-    
-            if(first!==result.total){
-                setFirst(result.total);
-                setSecond(first);
-                setThird(second);
-    
-            }
+                if(temp.length > 3) temp.length = 3;
 
-            
-        }, 3000);
+                setPrevious_values(temp);
+                setDisplay(true);
+                
+            }else return;
+    
+        }, 2500);
         
     }
 
@@ -109,7 +107,7 @@ function Main() {
   return (
     <div className='mt-32'>
         <div className=''>
-           <History one={first} two={second} three={third}/>
+           <History values={previous_values}/>
         </div>
         <div className='m-2 flex flex-wrap justify-center items-center'>
         <form action="" id='formk'

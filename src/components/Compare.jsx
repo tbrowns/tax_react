@@ -72,6 +72,7 @@ function Compare({amount}) {
 
   }
 
+
   const percent={
     kenya:100-(kenyan_tax()/new_amount*100),
     uganda:100-(ugandan_tax()/new_amount*100),
