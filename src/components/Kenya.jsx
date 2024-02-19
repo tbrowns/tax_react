@@ -6,22 +6,22 @@ export function Kenya(basic_pay,nssf,nhif) {
     let nhif_amount=0;
 
     if(nhif){
-      if(basic_pay>100000) nhif_amount=1700;
-      else if(basic_pay>90000) nhif_amount=1600;
-      else if(basic_pay>80000) nhif_amount=1500;
-      else if(basic_pay>70000) nhif_amount=1400;
-      else if(basic_pay>60000) nhif_amount=1300;
-      else if(basic_pay>50000) nhif_amount=1200;
-      else if(basic_pay>45000) nhif_amount=1100;
-      else if(basic_pay>40000) nhif_amount=1000;
-      else if(basic_pay>35000) nhif_amount=950;
-      else if(basic_pay>30000) nhif_amount=900;
-      else if(basic_pay>25000) nhif_amount=850;
-      else if(basic_pay>20000) nhif_amount=750;
-      else if(basic_pay>15000) nhif_amount=600;
-      else if(basic_pay>12000) nhif_amount=500;
-      else if(basic_pay>8000)  nhif_amount=400;
-      else if(basic_pay>6000)  nhif_amount=300;
+      if(basic_pay>=100000) nhif_amount=1700;
+      else if(basic_pay>=90000) nhif_amount=1600;
+      else if(basic_pay>=80000) nhif_amount=1500;
+      else if(basic_pay>=70000) nhif_amount=1400;
+      else if(basic_pay>=60000) nhif_amount=1300;
+      else if(basic_pay>=50000) nhif_amount=1200;
+      else if(basic_pay>=45000) nhif_amount=1100;
+      else if(basic_pay>=40000) nhif_amount=1000;
+      else if(basic_pay>=35000) nhif_amount=950;
+      else if(basic_pay>=30000) nhif_amount=900;
+      else if(basic_pay>=25000) nhif_amount=850;
+      else if(basic_pay>=20000) nhif_amount=750;
+      else if(basic_pay>=15000) nhif_amount=600;
+      else if(basic_pay>=12000) nhif_amount=500;
+      else if(basic_pay>=8000)  nhif_amount=400;
+      else if(basic_pay>=6000)  nhif_amount=300;
       else nhif_amount=150
 
     }

@@ -92,7 +92,7 @@ function Main() {
                 }
             }else return;
     
-        }, 2500);
+        }, 1500);
         
     }
 
@@ -103,7 +103,7 @@ function Main() {
             setDisplay(false);
             setDisplay_analysis(true);
             setIsLoading2(false);
-        }, 4000);
+        }, 1500);
        
     }
 
@@ -159,10 +159,10 @@ function Main() {
                         onClick={()=>setSecond_message(!second_message)}>
                             {second_message &&
                                 <div className='p-2 bg-lavendar w-52 absolute z-50 rounded-xl'>
-                                    National Hostpital Insurance Fund is a state cooperation with
-                                    madate to provide health care to Kenyans over the age of 18 years.
-                                    15% of the NHIF contribution is insurance relief, therefore, only 85%
-                                    of NHIF is deducted
+                                    National Hospital Insurance Fund is a state co-operation with
+                                    mandate to provide health care services to Kenyans over the age of 18 years.The
+                                    goverment provides 15% of the NHIF contribution as insurance relief, therefore,
+                                    only 85% of NHIF is deducted
                                 </div>
                                 
                             }
@@ -183,7 +183,7 @@ function Main() {
              </div>
             }
 
-            {location.pathname==='/Tanzania'&&
+            {location.pathname==='/Tanzania' &&
 
                 <div className='flex justify-center items-center m-3  w-28 h-8  border border-black rounded-2xl'>
                     <motion.button whileTap={{scale: .8}} type="button"
@@ -191,10 +191,10 @@ function Main() {
                         onClick={()=>setFirst_message(!first_message)}>
                             {first_message &&
                                <div className='p-2 bg-lavendar w-52 absolute z-50 rounded-xl'>
-                                    Every employer in the private sector must contribute to the NSSF.theeployer's 
+                                    Every employer in the private sector must contribute to the NSSF.The employer's 
                                     contibution is 20% of the employe's cash renumeration, however the employee
-                                    is entitled to recover upto half of this from the employee.Therefeore, the calculation
-                                    use 10% as the rate of NSSF.
+                                    is entitled to recover upto half of this.Therefeore, the calculation
+                                    used is 10% as the rate of NSSF.
                                </div>
                             }
                             
@@ -202,7 +202,6 @@ function Main() {
                             <div className=''>NSSF</div>
                     </motion.button>
                 </div>
-
             }
 
             {location.pathname==='/Uganda' &&
@@ -228,9 +227,7 @@ function Main() {
                         onClick={()=>setSecond_message(!second_message)}>
                             {second_message &&
                                 <div className='p-2 bg-lavendar w-52 absolute z-50 rounded-xl'>
-                                    Local Service Tax(LST) is deducted from the employee's 
-                                    gross salary when calculating the amount subjected to PAYE. LST is payable
-                                    in the first 4 months of the Goverments's finacial year (i.e July - October)
+                                    LST is payable in the first 4 months of the Goverments's finacial year (i.e July - October)
                                     It is based on the gross salary earning of employees
                                 </div>
                             }

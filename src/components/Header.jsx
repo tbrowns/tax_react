@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 import { Dropdown } from "rsuite"; 
 import "rsuite/dist/rsuite.min.css"; 
 
-
 function Header() {
   const location=useLocation();
   let country="Kenya";
